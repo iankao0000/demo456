@@ -10,7 +10,9 @@ int main(int argc, char* argv[]) {
   // Create the D-Bus object
   sdbusplus::asio::object_server objectServer(systemBus);
   auto intf = objectServer.add_interface("/xyz/openbmc_project/inventec/BU6",
-    "xyz.openbmc_project.inventec.Test");
+    "xyz.openbmc_project.inventec.SW2A");
+  // Create the D-Bus properties
+  intf->register_property("Job_Number", std::string("IEC140932"));
   intf->initialize();
   io.run();
   return 0;
